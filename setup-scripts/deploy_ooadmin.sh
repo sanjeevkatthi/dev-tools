@@ -53,5 +53,10 @@ mkdir -p /opt/oneops/inductor/lib
 \cp /opt/activemq/conf/client.ts /opt/oneops/inductor/lib/client.ts
 ln -sf /home/oneops/build/circuit-oneops-1 .
 inductor start
+inductor install_initd
+chkconfig --add inductor
+chkconfig inductor on
+echo "export INDUCTOR_HOME=/opt/oneops/inductor" > /opt/oneops/inductor_env.sh
+echo "export PATH=$PATH:/usr/local/bin" >> /opt/oneops/inductor_env.sh
 
 echo "done with inductor"
