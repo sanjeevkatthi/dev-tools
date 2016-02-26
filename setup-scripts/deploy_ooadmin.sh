@@ -40,13 +40,11 @@ cd "$BUILD_BASE/circuit-oneops-1"
 bundle install
 circuit install
 
-echo "Done with admin"
-
-echo "install inductor"
+echo "install inductor as ooadmin"
+adduser ooadmin 2>/dev/null
 
 cd /opt/oneops
 chown ooadmin /opt/oneops
-# inductor run as ooadmin
 su ooadmin -c "
 inductor create
 cd inductor
