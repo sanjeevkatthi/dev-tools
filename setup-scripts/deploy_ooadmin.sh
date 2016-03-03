@@ -11,17 +11,6 @@ export DISPLAY_LOCAL_STORE="/opt/oneops/public"
 rm -fr circuit
 circuit create
 cd circuit
-
-bundle install
-if [ ! $? -eq 0 ]; then
-	echo "bundle install failed, retrying"
-	bundle install
-	if [ ! $? -eq 0 ]; then
-		echo "Can not instal oneops-admin circuit, exiting :-("
-		exit 1
-	fi
-fi
-
 circuit init
 
 cd "$BUILD_BASE"
@@ -37,7 +26,6 @@ fi
 sleep 2
 
 cd "$BUILD_BASE/circuit-oneops-1"
-bundle install
 circuit install
 
 echo "install inductor as ooadmin"
