@@ -21,5 +21,4 @@ cd $OO_HOME
 
 cp $BUILD_BASE/dev-tools/setup-scripts/* .
 
-./oneops_build.sh
-
+./oneops_build.sh "$@"
