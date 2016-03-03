@@ -28,6 +28,10 @@ chown tomcat7:root /usr/local/tomcat7/bin/setenv.sh
 mkdir -p /opt/oneops/controller/antenna/retry
 mkdir -p /opt/oneops/opamp/antenna/retry
 mkdir -p /opt/oneops/cms-publisher/antenna/retry
+mkdir -p /opt/oneops/transmitter/antenna/retry
+mkdir -p /opt/oneops/transmitter/search/retry
+mkdir -p /opt/oneops/controller/search/retry
+mkdir -p /opt/oneops/opamp/search/retry
 
 service tomcat7 start
 
