@@ -12,7 +12,7 @@ echo "Starting at : $now"
 echo "Stopping services to free up memory for build"
 service cassandra stop
 
-source $OO_HOME/install_build_srvr.sh
+$OO_HOME/install_build_srvr.sh "$@"
 
 now=$(date +"%T")
 echo "Completed git build : $now"
