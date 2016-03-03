@@ -47,9 +47,13 @@ rake server
 
 sleep 5
 
+ref="$1"
+if [[ -z  $ref ]]; then
+  ref=stable
+fi
 
-echo "submit build"
-curl -X POST http://localhost:3001/job/oo-all-oss/build --data token=TOKEN --data-urlencode json='{"parameter": [{"name":"REF", "value":"stable"}, {"name":"VERSION", "value":"continuous"}, {"name":"TAG", "value":"false"}, {"name":"PUSH_TAG", "value":""}]}'
+echo "submit build $ref"
+curl -X POST http://localhost:3001/job/oo-all-oss/build --data token=TOKEN --data-urlencode json="{'parameter': [{'name':'REF', 'value':'$ref'}, {'name':'VERSION', 'value':'continuous'}, {'name':'TAG', 'value':'false'}, {'name':'PUSH_TAG', 'value':''}]}"
 
 GREP_RETURN_CODE=0
 
@@ -72,5 +76,3 @@ else
     echo "build is complete, stoping jenkins!"
     rake stop
 fi
-
-
