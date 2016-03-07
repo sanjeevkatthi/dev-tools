@@ -37,7 +37,25 @@ su ooadmin -c "
 inductor create
 cd inductor
 # add inductor using shared queue
-inductor add < /home/oneops/build/dev-tools/setup-scripts/inductor_answers
+inductor add --mqhost localhost \
+--dns on \
+--debug on \
+--daq_enabled true \
+--collector_domain localhost \
+--tunnel_metrics on \
+--perf_collector_cert /etc/pki/tls/logstash/certs/logstash-forwarder.crt \
+--ip_attribute public_ip \
+--queue shared \
+--mgmt_url http://localhost:9090 \
+--logstash_cert_location /etc/pki/tls/logstash/certs/logstash-forwarder.crt \
+--logstash_hosts vagrant.oo.com:5000 \
+--max_consumers 10 \
+--local_max_consumers 10 \
+--authkey superuser:amqpass \
+--amq_truststore_location /opt/oneops/inductor/lib/client.ts \
+--additional_java_args "" \
+--env_vars ""
+
 mkdir -p /opt/oneops/inductor/lib
 \cp /opt/activemq/conf/client.ts /opt/oneops/inductor/lib/client.ts
 ln -sf /home/oneops/build/circuit-oneops-1 .
