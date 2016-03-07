@@ -53,8 +53,8 @@ inductor add --mqhost localhost \
 --local_max_consumers 10 \
 --authkey superuser:amqpass \
 --amq_truststore_location /opt/oneops/inductor/lib/client.ts \
---additional_java_args "" \
---env_vars ""
+--additional_java_args \"\" \
+--env_vars \"\"
 
 mkdir -p /opt/oneops/inductor/lib
 \cp /opt/activemq/conf/client.ts /opt/oneops/inductor/lib/client.ts
