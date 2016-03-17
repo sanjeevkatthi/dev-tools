@@ -21,3 +21,5 @@ export API_ACESS_CONTROL=permitAll
 export NOTIFICATION_SYSTEM_USER=admin
 export JAVA_OPTS="-Doneops.url=http://loclahost:3000 -Dcom.oneops.controller.use-shared-queue=true"
 export CATALINA_PID=/var/run/tomcat7.pid
+export SEARCHMQ_USER=superuser
+export SEARCHMQ_PASS=amqpass
