@@ -49,7 +49,7 @@ sleep 5
 
 ref="$1"
 if [[ -z  $ref ]]; then
-  ref=stable-2016-03-10
+  ref=stable-2016-03-23
 fi
 
 echo "submit build $ref"
