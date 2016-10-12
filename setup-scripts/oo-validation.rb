@@ -18,6 +18,11 @@ def check_for_failure(response, request)
 	end
 end
 
+def creating_user()
+	response=JSON.parse(`#{@curl_post_command.gsub(" -u test:test", "")} -d '{ "user": { "email": "test@oneops.com", "username": "test", "password": "test", "password_confirmation": "test", "name": "test" } }' http://localhost:3000/users 2>&1`)
+	check_for_failure(response, "creating user")
+end
+
 def creating_organization()
 	response=JSON.parse(`#{@curl_post_command} -d '{ "name": "test" }' http://localhost:3000/account/organizations 2>&1`)
 	check_for_failure(response, "creating organization")
@@ -145,7 +150,7 @@ def disabling_stub_inductor()
 end
 
 # creating user test:test
-system("sh /home/oneops/oo-create-user.sh")
+creating_user
 
 # creating organization test
 creating_organization
@@ -212,6 +217,3 @@ deleting_organization
 
 # disabling stub inductor
 disabling_stub_inductor
-
-# deleting user test
-system("sh /home/oneops/oo-remove-user.sh")
