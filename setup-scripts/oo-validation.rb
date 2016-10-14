@@ -1,10 +1,10 @@
 
 require 'json'
 
-@curl_get_command='curl -s -X GET -H "Content-Type: application/json" -H "Accept: application/json" -u test:test'
-@curl_post_command='curl -s -X POST -H "Content-Type: application/json" -H "Accept: application/json" -u test:test'
-@curl_put_command='curl -s -X PUT -H "Content-Type: application/json" -H "Accept: application/json" -u test:test'
-@curl_delete_command='curl -s -X DELETE -H "Content-Type: application/json" -H "Accept: application/json" -u test:test'
+@curl_get_command='curl -s -X GET -H "Content-Type: application/json" -H "Accept: application/json" -u test:test123'
+@curl_post_command='curl -s -X POST -H "Content-Type: application/json" -H "Accept: application/json" -u test:test123'
+@curl_put_command='curl -s -X PUT -H "Content-Type: application/json" -H "Accept: application/json" -u test:test123'
+@curl_delete_command='curl -s -X DELETE -H "Content-Type: application/json" -H "Accept: application/json" -u test:test123'
 
 @stub_params="-Dstub.clouds=openstack -DstubResultCode=0 -Dstub.responseTimeInSeconds=1"
 @original_params=File.read("/opt/oneops/inductor/clouds-available/shared/conf/vmargs")
@@ -19,8 +19,13 @@ def check_for_failure(response, request)
 end
 
 def creating_user()
-	response=JSON.parse(`#{@curl_post_command.gsub(" -u test:test", "")} -d '{ "user": { "email": "test@oneops.com", "username": "test", "password": "test", "password_confirmation": "test", "name": "test" } }' http://localhost:3000/users 2>&1`)
+	response=JSON.parse(`#{@curl_post_command.gsub(" -u test:test123", "")} -d '{ "user": { "email": "test@oneops.com", "username": "test", "password": "test123", "password_confirmation": "test123", "name": "test" } }' http://localhost:3000/users 2>&1`)
 	check_for_failure(response, "creating user")
+end
+
+def accept_user_terms_conditions()
+	`#{@curl_get_command} http://localhost:3000/users/sign_in`
+	`#{@curl_put_command} http://localhost:9090/account/profile/accept_eula -d '{ "eula_accepted":"true" }' http://localhost:3000/account/profile/accept_eula`
 end
 
 def creating_organization()
@@ -149,8 +154,11 @@ def disabling_stub_inductor()
 	restart_inductor
 end
 
-# creating user test:test
+# creating user test:test123
 creating_user
+
+# accepting new terms and conditions
+accept_user_terms_conditions
 
 # creating organization test
 creating_organization
