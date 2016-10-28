@@ -1,4 +1,4 @@
-
+#!/usr/bin/env ruby
 require 'json'
 
 @curl_get_command='curl -s -X GET -H "Content-Type: application/json" -H "Accept: application/json" -u test:test123'
