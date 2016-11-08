@@ -23,3 +23,4 @@ export JAVA_OPTS="-Doneops.url=http://localhost:3000 -Dcom.oneops.controller.use
 export CATALINA_PID=/var/run/tomcat7.pid
 export SEARCHMQ_USER=superuser
 export SEARCHMQ_PASS=amqpass
+export MD_CACHE_ENABLED=false
