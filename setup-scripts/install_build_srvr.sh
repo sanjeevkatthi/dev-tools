@@ -70,7 +70,7 @@ done
 curl --silent http://localhost:3001/job/oo-all-oss/lastBuild/api/json | grep result\":\"SUCCESS > /dev/null
 
 if [ $? -eq 1 ]; then
-    echo "build failed, please check jenkins log, or go to http://localhost:30001"
+    echo "build failed, please check jenkins log, or go to http://localhost:3001"
     exit 1;
 else
     echo "build is complete, stoping jenkins!"
