@@ -14,6 +14,10 @@ service cassandra stop
 
 $OO_HOME/install_build_srvr.sh "$@"
 
+if [ $? -ne 0 ]; then
+	exit 1;
+fi
+
 now=$(date +"%T")
 echo "Completed git build : $now"
 
