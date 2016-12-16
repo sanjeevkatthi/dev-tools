@@ -53,5 +53,6 @@ cd /opt/oneops
 #nohup rails server >> /opt/oneops/log/rails.log 2>&1 &
 service display start
 
-echo "OneOps should be up on http://localhost:3000"
-echo "Configure your port forwarding and shut down iptables service (or configure it) if needed"
+echo "OneOps installation completed."
+echo "The user interface is mapped to port 3000 and available at http://localhost:9090 on the host machine."
+echo "Configure your port forwarding and shut down iptables service (or configure it) if needed."
