@@ -49,7 +49,7 @@ sleep 5
 
 ref="$1"
 if [[ -z  $ref ]]; then
-  ref=16.11.10-STABLE
+  ref=17.01.05-STABLE
 fi
 
 echo "submit build $ref"
